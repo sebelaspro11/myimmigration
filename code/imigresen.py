@@ -42,9 +42,14 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Load your CSV data
-@st.cache_resource()
-df = pd.read_csv("data/imigresen.csv")
-df['Date'] = pd.to_datetime(df['Date'])  # Ensure the Date column is in datetime64 format
+@st.cache_resource
+def load_data():
+    df = pd.read_csv("data/imigresen.csv")
+    df['Date'] = pd.to_datetime(df['Date'])  # Ensure the Date column is in datetime64 format
+    return df
+
+df = load_data()
+
 
 # Drop 'Unnamed: 0' column if it exists
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
