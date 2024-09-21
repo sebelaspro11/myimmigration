@@ -4,8 +4,8 @@ from datetime import datetime
 import plotly.express as px
 
 st.set_page_config(
-    page_title="Cari Harga",
-    page_icon="🛒", layout="wide"
+    page_title="MYEntrance",
+    page_icon="🛂", layout="wide"
 )
 
 hide_streamlit_style = """
@@ -39,9 +39,10 @@ hide_streamlit_style = """
                 }
                 </style>
                 """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 # Load your CSV data
-df = pd.read_csv("D:/streamlit/imigresen/imigresen.csv")
+df = pd.read_csv("data/imigresen.csv")
 df['Date'] = pd.to_datetime(df['Date'])  # Ensure the Date column is in datetime64 format
 
 # Drop 'Unnamed: 0' column if it exists
