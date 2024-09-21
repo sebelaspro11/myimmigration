@@ -7,7 +7,7 @@ st.set_page_config(
     page_title="MYEntrance",
     page_icon="🛂", layout="wide"
 )
-@st.cache_data(ttl=None)
+
 hide_streamlit_style = """
                 <style>
                 div[data-testid="stToolbar"] {
@@ -42,7 +42,7 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Load your CSV data
-
+@st.cache_resource()
 df = pd.read_csv("data/imigresen.csv")
 df['Date'] = pd.to_datetime(df['Date'])  # Ensure the Date column is in datetime64 format
 
